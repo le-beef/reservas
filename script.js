@@ -1,3 +1,42 @@
+// LOGIN PERSISTENTE
+const senhaCorreta = "7878";
+
+// IDENTIFICADOR DA SENHA
+const VERSAO_LOGIN = "7878";
+
+// VERIFICA LOGIN
+if (localStorage.getItem("logado") !== VERSAO_LOGIN) {
+
+    let acessoPermitido = false;
+
+    while (!acessoPermitido) {
+
+        const senhaDigitada = prompt("Por favor, digite a senha para acessar o mapa:");
+
+        // CANCELAR
+        if (senhaDigitada === null) {
+            location.reload();
+            break;
+        }
+
+        // SENHA CORRETA
+        if (senhaDigitada === senhaCorreta) {
+
+            acessoPermitido = true;
+
+            // SALVA LOGIN
+            localStorage.setItem("logado", VERSAO_LOGIN);
+
+            alert("Acesso concedido!");
+
+        } else {
+
+            alert("Senha incorreta. Tente novamente.");
+
+        }
+    }
+}
+
 // O restante do seu script.js só rodará se a senha estiver correta.
 
 document.addEventListener('DOMContentLoaded', () => {
